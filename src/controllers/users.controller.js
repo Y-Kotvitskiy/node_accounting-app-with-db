@@ -8,7 +8,7 @@ class UserController {
   }
 
   static async getById(req, res) {
-    const userId = await Number(req.params.id);
+    const userId = Number(req.params.id);
 
     if (!(userId >= 0)) {
       return res.sendStatus(400);

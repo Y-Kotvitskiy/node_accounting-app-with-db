@@ -21,11 +21,11 @@ class ExpenseController {
     }
 
     /* eslint-disable comma-dangle, prettier/prettier */
-    const users = (await expensesService.getAll(query)).map((expense) =>
+    const expenses = (await expensesService.getAll(query)).map((expense) =>
       expensesService.normalize(expense),);
     /* eslint-enable comma-dangle, prettier/prettier */
 
-    return res.json(users);
+    return res.json(expenses);
   }
 
   async getById(req, res) {

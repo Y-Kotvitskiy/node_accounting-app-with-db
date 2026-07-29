@@ -37,12 +37,16 @@ class ExpenseService {
         };
       }
 
-      if (query.from) {
-        where.spentAt = { [Op.gte]: new Date(query.from) };
-      }
+      if (query.from || query.to) {
+        where.spentAt = {};
 
-      if (query.to) {
-        where.spentAt = { [Op.lte]: new Date(query.to) };
+        if (query.from) {
+          where.spentAt[Op.gte] = new Date(query.from);
+        }
+
+        if (query.to) {
+          where.spentAt[Op.lte] = new Date(query.to);
+        }
       }
     }
 
